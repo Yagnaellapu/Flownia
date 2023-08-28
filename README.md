@@ -1,4 +1,4 @@
-# This is Flownia REact Repository
+# This is Flownia React Repository
 
 In the project directory, you can run:
 
