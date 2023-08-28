@@ -10,6 +10,7 @@ import Search from "./Search/Search";
 import EditDeleteButtons from "./Buttons/EditDeleteButtons";
 import TextField from "./TextField/TextField";
 import Pagination from "./Pagination/Pagination";
+import Modal from "./Modal/Modal";
 
 export {
   Header,
@@ -24,4 +25,5 @@ export {
   EditDeleteButtons,
   TextField,
   Pagination,
+  Modal,
 };
