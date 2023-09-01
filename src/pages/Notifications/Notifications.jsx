@@ -1,19 +1,34 @@
 import React from "react";
+import Tabs from "../../components/Tabs/Tabs";
+import ScrollingMessage from "./ScrollingMessage";
+import SmsNotifications from "./SmsNotifications";
 
-import { FiMail } from "react-icons/fi";
-import { Cards } from "../../components";
-import { menuList } from "../../constants/menu.constants";
 
 function Notifications() {
-  return (
-    <div className="flex flex-col h-full">
-      <div className="flex-grow p-3 ">
-        <div className="flex items-center gap-2 text-primary-text-color p-2 font-bold">
-          <FiMail className="w-6 h-6" />
-          <h3>{menuList.NOTIFICATIONS}</h3>
+  const tabData = [
+    {
+      label: "SCROLLING MESSAGE",
+      component: (
+        <div>
+          <div>
+            <ScrollingMessage />
+          </div>
         </div>
-        <Cards />
-      </div>
+      ),
+    },
+    {
+      label: "SMS NOTIFICATION",
+      component: <SmsNotifications/>,
+    },
+    {
+      label: "LICENCE NOTIFICATION",
+      component: <div>This is the content of Tab 3</div>,
+    },
+  ];
+
+  return (
+    <div>
+      <Tabs tabs={tabData} />
     </div>
   );
 }

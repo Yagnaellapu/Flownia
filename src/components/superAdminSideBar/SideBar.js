@@ -19,7 +19,7 @@ function SideBar({ isOpen }) {
   const location = useLocation();
 
   const isActive = (path) => {
-    return location.pathname === path;
+    return location.pathname.startsWith(path) && path !== routes.HOME;
   };
 
   const menus = [
@@ -73,7 +73,7 @@ function SideBar({ isOpen }) {
             />
           </span>
           {isOpen ? (
-            <p className="font-bold relative bottom-2.5 text-right mr-6">
+            <p className="font-bold relative bottom-2 text-right mr-6">
               Version4.0A
             </p>
           ) : (
@@ -88,7 +88,7 @@ function SideBar({ isOpen }) {
               key={i}
               className={`group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-[#e6e1f9] bg-customBackground text-customText bg-opacity-20 rounded-md ${
                 isActive(menu.path)
-                  ? "bg-[#7a5cf1] text-primary-text-color rounded-10"
+                  ? "bg-[#7a5cf1] text-primary-color rounded-10"
                   : ""
               }`}
             >
