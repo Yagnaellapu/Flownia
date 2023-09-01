@@ -1,4 +1,5 @@
 import React from "react";
+import Checkbox from "./Checkbox";
 
 const IndeterminateCheckbox = React.forwardRef(
   ({ indeterminate, ...rest }, ref) => {
@@ -9,16 +10,7 @@ const IndeterminateCheckbox = React.forwardRef(
       resolvedRef.current.indeterminate = indeterminate;
     }, [resolvedRef, indeterminate]);
 
-    return (
-      <>
-        <input
-          type="checkbox"
-          className="mr-2 w-4 h-4"
-          ref={resolvedRef}
-          {...rest}
-        />
-      </>
-    );
+    return <Checkbox {...rest} inputref={resolvedRef} />;
   }
 );
 

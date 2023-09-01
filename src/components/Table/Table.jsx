@@ -29,6 +29,7 @@ Table.propTypes = {
   selectedRows: PropTypes.func,
   disableHeaderCheckBox: PropTypes.bool,
   searchInput: PropTypes.string,
+  noPagination: PropTypes.bool,
 };
 
 Table.defaultProps = {
@@ -36,6 +37,7 @@ Table.defaultProps = {
   disableHeaderCheckBox: false,
   selectedRows: () => {},
   searchInput: "",
+  noPagination: false,
 };
 
 function Table({
@@ -45,6 +47,7 @@ function Table({
   selectedRows,
   disableHeaderCheckBox,
   searchInput,
+  noPagination,
 }) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [globalFilter, setGlobalFilter] = React.useState("");
@@ -56,28 +59,24 @@ function Table({
         columnHelper.accessor("_", {
           header: ({ table }) => {
             return !disableHeaderCheckBox ? (
-              <div className="px-3">
-                <IndeterminateCheckbox
-                  {...{
-                    checked: table.getIsAllRowsSelected(),
-                    indeterminate: table.getIsSomeRowsSelected(),
-                    onChange: table.getToggleAllRowsSelectedHandler(),
-                  }}
-                />
-              </div>
+              <IndeterminateCheckbox
+                {...{
+                  checked: table.getIsAllRowsSelected(),
+                  indeterminate: table.getIsSomeRowsSelected(),
+                  onChange: table.getToggleAllRowsSelectedHandler(),
+                }}
+              />
             ) : null;
           },
           cell: ({ row }) => (
-            <div className="px-1">
-              <IndeterminateCheckbox
-                {...{
-                  checked: row.getIsSelected(),
-                  disabled: !row.getCanSelect(),
-                  indeterminate: row.getIsSomeSelected(),
-                  onChange: row.getToggleSelectedHandler(),
-                }}
-              />
-            </div>
+            <IndeterminateCheckbox
+              {...{
+                checked: row.getIsSelected(),
+                disabled: !row.getCanSelect(),
+                indeterminate: row.getIsSomeSelected(),
+                onChange: row.getToggleSelectedHandler(),
+              }}
+            />
           ),
         }),
         ...columns,
@@ -121,13 +120,13 @@ function Table({
 
   return (
     <>
-      <div className="p-2 rounded">
+      <div>
         <table className="w-full table-auto">
           <thead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id} className="bg-[#cdc3f1] text-left">
-                {headerGroup.headers.map((header) => (
-                  <th key={header.id} className="px-2 py-3">
+            {table.getHeaderGroups().map((headerGroup, index) => (
+              <tr key={headerGroup.id} className="bg-[#cdc3f1] text-center">
+                {headerGroup.headers.map((header, index) => (
+                  <th key={header.id} className={`p-3`}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -143,35 +142,19 @@ function Table({
             {table.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className="text-left border-b-2 hover:bg-[#ebe7f9] bg-customBackground text-customText bg-opacity-20 hover:rounded-full"
+                className={`border-b-2 hover:bg-[#ebe7f9] bg-opacity-20 text-center`}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-4 py-3 hover:rounded-l-lg">
+                  <td key={cell.id} className={`p-3`}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
               </tr>
             ))}
           </tbody>
-          <tfoot>
-            {table.getFooterGroups().map((footerGroup) => (
-              <tr key={footerGroup.id}>
-                {footerGroup.headers.map((header) => (
-                  <th key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.footer,
-                          header.getContext()
-                        )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </tfoot>
         </table>
       </div>
-      <Pagination table={table} />
+      {!noPagination ? <Pagination table={table} /> : null}
     </>
   );
 }
