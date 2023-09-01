@@ -1,128 +1,12 @@
 import React from "react";
-import { Cards, Table } from "../../components";
-import { createColumnHelper } from "@tanstack/react-table";
+import { Cards } from "../../components";
+
 import { menuList } from "../../constants/menu.constants";
 
 function Home() {
-  const headerData = [
-    {
-      id: 1,
-      startDate: "2023-08-16",
-      businessType: "Retail",
-      brand: "ABC",
-      facilityName: "Store 1",
-      facilityAddress: "123 Main St",
-      state: "CA",
-      zipcode: "12345",
-    },
-    {
-      id: 2,
-      startDate: "1996-03-15",
-      businessType: "Retail",
-      brand: "ABC",
-      facilityName: "Store 1",
-      facilityAddress: "123 Main St",
-      state: "CA",
-      zipcode: "12345",
-    },
-    {
-      id: 3,
-      startDate: "2023-09-16",
-      businessType: "Retail",
-      brand: "ABC",
-      facilityName: "Store 1",
-      facilityAddress: "123 Main St",
-      state: "CA",
-      zipcode: "12345",
-    },
-    {
-      id: 4,
-      startDate: "2003-02-16",
-      businessType: "Retail",
-      brand: "ABC",
-      facilityName: "Store 1",
-      facilityAddress: "123 Main St",
-      state: "CA",
-      zipcode: "12345",
-    },
-    {
-      id: 5,
-      startDate: "2020-10-16",
-      businessType: "Retail",
-      brand: "ABC",
-      facilityName: "Store 1",
-      facilityAddress: "123 Main St",
-      state: "CA",
-      zipcode: "12345",
-    },
-    {
-      id: 6,
-      startDate: "2023-08-16",
-      businessType: "Retail",
-      brand: "ABC",
-      facilityName: "Store 1",
-      facilityAddress: "123 Main St",
-      state: "CA",
-      zipcode: "12345",
-    },
-    {
-      id: 7,
-      startDate: "2023-08-16",
-      businessType: "Retail",
-      brand: "ABC",
-      facilityName: "Store 1",
-      facilityAddress: "123 Main St",
-      state: "CA",
-      zipcode: "12345",
-    },
-    {
-      id: 8,
-      startDate: "2023-08-16",
-      businessType: "Retail",
-      brand: "ABC",
-      facilityName: "Store 1",
-      facilityAddress: "123 Main St",
-      state: "CA",
-      zipcode: "12345",
-    },
-  ];
-
-  const columnHelper = createColumnHelper();
-
-  const columns = [
-    columnHelper.accessor("id", {
-      header: "ID",
-    }),
-    columnHelper.accessor("startDate", {
-      header: "Start Date",
-      cell: (value) => {
-        const date = new Date(value.getValue());
-        return <span> {date.getFullYear()}</span>;
-      },
-    }),
-    columnHelper.accessor("businessType", {
-      header: "Business Type",
-    }),
-    columnHelper.accessor("brand", {
-      header: "Brand",
-    }),
-    columnHelper.accessor("facilityName", {
-      header: "Facility Name",
-    }),
-    columnHelper.accessor("facilityAddress", {
-      header: "Facility Address",
-    }),
-    columnHelper.accessor("state", {
-      header: "State",
-    }),
-    columnHelper.accessor("zipcode", {
-      header: "Zip Code",
-    }),
-  ];
   return (
-    <div className="flex flex-col">
-      <div className="flex-grow p-3 ">
-        <div className="flex items-center gap-2 text-primary-text-color p-2 font-bold">
+    <div className="flex-grow px-4">
+      <div className="flex items-center gap-2 h-14 text-primary-color font-bold">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -139,16 +23,7 @@ function Home() {
           </svg>
           <h3>{menuList.HOME}</h3>
         </div>
-        <Cards />
       </div>
-
-      <Table
-        tableData={headerData}
-        columns={columns}
-        enableRowSelection={true}
-        disableHeaderCheckBox
-      />
-    </div>
   );
 }
 

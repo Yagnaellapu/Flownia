@@ -10,6 +10,7 @@ function Buttons({ buttons, btnContainerClassName }) {
           title={title}
           onClick={onClick}
           {...(type === "primary" ? { primary: true } : { secondary: true })}
+          className="w-40 px-2"
         />
       ))}
     </div>

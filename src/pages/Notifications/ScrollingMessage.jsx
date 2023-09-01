@@ -1,27 +1,22 @@
 import React, { useState } from "react";
-import { TfiMenuAlt } from "react-icons/tfi";
-import { FaUserTie } from "react-icons/fa";
+import { Button, Selector, TextField } from "../../components";
 import {
-  Selector,
   Table,
   Search,
   EditDeleteButtons,
-  TextField,
   ScrollToTop,
-  Button,
 } from "../../components";
-import Buttons from "../../components/Buttons/Buttons";
 import { createColumnHelper } from "@tanstack/react-table";
-import { formatPhoneNumber } from "../../utils/formatPhoneNumber";
-import { menuList } from "../../constants/menu.constants";
 
-const Zlinks = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [error, setError] = useState(false);
+
+function ScrollingMessage() {
   const [searchValue, setSearchValue] = useState("");
 
   const [selectedRows, setSelectedRows] = useState([]);
 
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value);
+  };
   const headerData = [
     {
       id: 1,
@@ -402,7 +397,6 @@ const Zlinks = () => {
       name: "TBD",
     },
   ];
-
   const columnHelper = createColumnHelper();
 
   const columns = [
@@ -432,101 +426,57 @@ const Zlinks = () => {
     }),
   ];
 
-  const [userInfo, setUserInfo] = useState({
-    name: "",
-    Email: "",
-    phoneNumber: "",
-  });
-
-  const handleSearchChange = (event) => {
-    setSearchValue(event.target.value);
-  };
-
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    const numericValue = value.replace(/[^0-9]/g, "");
-
-    if (numericValue.length <= 10) {
-      setInputValue(formatPhoneNumber(numericValue));
-      setError(false);
-    } else {
-      setError(true);
-    }
-  };
-
-  const handleFormSubmit = () => {
-    if (error) {
-      console.error("Validation error: Only numbers are allowed");
-      return;
-    }
-
-    // Update the user information state
-    setUserInfo((prevUserInfo) => ({
-      ...prevUserInfo,
-      phoneNumber: inputValue,
-    }));
-
-    // Clear the input field
-    setInputValue("");
-  };
-
-  // const personData = {
-  //   name: "John Doe",
-  //   email: "johndoe@example.com",
-  //   phoneNumber: "123-456-7890",
-  // };
-
-  const buttons = [
-    {
-      title: "Submit",
-      onClick: handleFormSubmit,
-      type: "primary",
-    },
-    {
-      title: "Cancel",
-      onClick: () => {},
-      type: "secondary",
-    },
-  ];
-
   const isEditActive = selectedRows.length === 1;
   const isDeleteActive = selectedRows.length > 0;
 
   return (
     <div className="flex-grow px-4">
-      <div className="flex items-center gap-2 h-14 text-primary-color font-bold">
-        <TfiMenuAlt className="w-6 h-6" />
-        <h3>{menuList.Z_LINKS}</h3>
-      </div>
-      <div className="py-8 gap-4 mb-4">
+      <div className="py-8 gap-4 mb-4 ">
         <div className="w-full mx-auto px-2">
-          <form className="col-span-3 grid grid-cols-3 gap-8">
-            <div className="col-span-1 flex flex-col">
-              <Selector label="Site Name" selectorList={sitename} />
-            </div>
-            <div className="col-span-1 flex flex-col">
-              <TextField
-                type="number"
-                label="User Contact #"
-                placeholder="User Contact #"
-                value={inputValue}
-                onChange={handleInputChange}
+          <form className="grid grid-cols-1 gap-6 ">
+            <div className=" w-full mx-auto max-w-xl">
+              <Selector
+                label={
+                  <span>
+                    Select Facility<sup>*</sup>
+                  </span>
+                }
+                selectorList={sitename}
+                defaultSelectName="--Select"
               />
             </div>
-            <div className="col-span-1 flex flex-col">
-              <FaUserTie className=" text-indigo-400 w-14 h-12 absolute top- right-72 transform translate-x-1/4 -translate-y-12" />
-              <div className="mt-1">
-                <p className="mb-2">Name: {userInfo.name}</p>
-                <p className="mb-2">Email: {userInfo.Email}</p>
-                <p className="mb-2">Phone: {userInfo.phoneNumber}</p>
+
+            <div className=" grid grid-cols-2 gap-6 w-full mx-auto max-w-4xl ">
+              <div className="col-span-1 flex flex-col">
+                <TextField
+                  type={"text"}
+                  label={"From"}
+                  placeholder={"Select Start Date"}
+                  value={""}
+                  onChange={() => {}}
+                />
+              </div>
+              <div className="col-span-1 flex flex-col">
+                <TextField
+                  type={"text"}
+                  label={"To"}
+                  placeholder={"Select End Date"}
+                  value={""}
+                  onChange={() => {}}
+                />
+              </div>
+              <div className="col-span-2 flex flex-col">
+                <label className=" font-semibold mb-2">Scrolling Message</label>
+                <textarea
+                  className="border-2  border-violet-400 rounded-lg p-2 outline-none"
+                  placeholder="Enter Scrolling Message"
+                  rows="4"
+                />
               </div>
             </div>
+            <Button className="w-full mx-auto max-w-xl mt-4" title={"submit"} />
           </form>
         </div>
-        <Buttons
-          btnContainerClassName="flex justify-center gap-10 mt-10 "
-          buttons={buttons}
-        /> 
       </div>
       <div className="px-4 py-3 h-14 flex items-center">
         <EditDeleteButtons
@@ -549,6 +499,6 @@ const Zlinks = () => {
       <ScrollToTop />
     </div>
   );
-};
+}
 
-export default Zlinks;
+export default ScrollingMessage;
