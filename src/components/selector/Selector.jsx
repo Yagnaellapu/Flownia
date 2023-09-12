@@ -6,12 +6,12 @@ import PropTypes from "prop-types";
 Selector.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   selectorList: PropTypes.array.isRequired,
-  defaultSelectName: PropTypes.string.isRequired,
+  defaultSelectName: PropTypes.string,
 };
 
 Selector.defaultProps = {
   placeholder: "search here",
-  
+  defaultSelectName:"--Select--"
 };
 
 function Selector({ label, selectorList, defaultSelectName, placeholder }) {

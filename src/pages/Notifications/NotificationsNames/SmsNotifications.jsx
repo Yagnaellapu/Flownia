@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Button, Selector, TextField } from "../../components";
+import { Button, Selector } from "../../../components";
 import {
   Table,
   Search,
   EditDeleteButtons,
   ScrollToTop,
-} from "../../components";
+} from "../../../components";
 import { createColumnHelper } from "@tanstack/react-table";
-
+import { FiMail as MailIcon } from "react-icons/fi";
+import { menuList } from "../../../constants/menu.constants";
+import { useNavigate } from "react-router-dom";
 
 function SmsNotifications() {
   const [searchValue, setSearchValue] = useState("");
@@ -425,16 +427,39 @@ function SmsNotifications() {
       header: "Zip Code",
     }),
   ];
+ const navigate = useNavigate();
+
 
   const isEditActive = selectedRows.length === 1;
   const isDeleteActive = selectedRows.length > 0;
 
   return (
-    <div className="flex-grow px-4">
-      <div className="py-8 gap-4 mb-4 ">
-        <div className="w-full mx-auto px-2">
+    <div className="flex-grow mx-6">
+      <div className="flex items-center text-primary-color h-14 font-bold">
+        <div className="flex items-center gap-2">
+          <MailIcon className="w-6 h-6" />
+          <h3>{menuList.NOTIFICATIONS_SMSNOTIFICATION}</h3>
+        </div>
+        <div className="flex justify-end flex-1">
+          <p
+            className="mr-8 cursor-pointer group relative"
+            onClick={() => navigate(`/notifications/scrolling message`)}
+          >
+            Scrolling Message
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
+          <p
+            className="cursor-pointer group relative"
+          >
+            License Notification
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
+        </div>
+      </div>
+
+      <div className="py-8 mb-4 ">
           <form className="grid grid-cols-1 gap-6 ">
-            <div className=" w-full mx-auto max-w-2xl">
+            <div className=" w-full mx-auto max-w-3xl">
               <Selector
                 label={"Bussiness Type"}
                 selectorList={sitename}
@@ -442,7 +467,7 @@ function SmsNotifications() {
               />
             </div>
 
-            <div className="w-full mx-auto max-w-2xl">
+            <div className="w-full mx-auto max-w-3xl">
               <Selector
                 label={"Notifications To"}
                 selectorList={sitename}
@@ -450,18 +475,21 @@ function SmsNotifications() {
               />
             </div>
 
-            <div className="w-full mx-auto max-w-2xl">
-              <label className=" font-semibold">Scrolling Message</label>
+            <div className="w-full mx-auto  max-w-3xl">
+              <label className=" font-semibold ">Scrolling Message</label>
               <textarea
-                className="border-2 mt-2 w-full border-violet-400 rounded-lg p-2 outline-none"
+                className="border-2 w-full mt-2 border-violet-400 rounded-lg p-2 outline-none"
                 placeholder="Enter Scrolling Message"
                 rows="4"
               />
             </div>
 
-            <Button className="w-full mx-auto max-w-md mt-4" title={"submit"} />
+            <Button
+              className="w-full mx-auto max-w-md mt-6"
+              title={"submit"}
+              primary
+            />
           </form>
-        </div>
       </div>
       <div className="px-4 py-3 h-14 flex items-center">
         <EditDeleteButtons

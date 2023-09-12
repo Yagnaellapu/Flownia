@@ -3,6 +3,18 @@ import { LuSignal } from "react-icons/lu";
 import { MdLocalMall } from "react-icons/md";
 import { BiSolidPieChartAlt2 } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+Cards.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.element.isRequired,
+      percentage: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ),
+};
 
 const cardsData = [
   {
@@ -37,9 +49,14 @@ const cardsData = [
   },
 ];
 
-function Cards({ cards = cardsData }) {
+Cards.defaultProps = {
+  cards: cardsData,
+};
+
+function Cards({ cards
+ }) {
   return (
-    <div className="grid grid-cols-5 gap-5 px-3 mt-4">
+    <div className="grid grid-cols-5 gap-6 px-3 mt-4">
       {cards.map(({ icon, percentage, content, title }) => (
         <div
           className="w-full hover:scale-110 ease-in duration-300"
@@ -47,7 +64,7 @@ function Cards({ cards = cardsData }) {
         >
           <Link to={`${title.toLowerCase()}`} className="block">
             <div className="relative bg-white p-4 h-32 rounded-md shadow-lg">
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-b from-gray-200 to-transparent"></div>
+              {/* <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-b from-gray-200 to-transparent"></div> */}
               <div className="flex items-center justify-between">
                 {icon}
                 <div
@@ -73,5 +90,3 @@ function Cards({ cards = cardsData }) {
 }
 
 export default Cards;
-
-

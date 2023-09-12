@@ -6,6 +6,7 @@ const routes = {
   APP_ACCESS: "/appaccess",
   NOTIFICATIONS: "/notifications",
   BILLING: "/billing",
+  RELEASES: "/releases",
 };
 
 export { routes };

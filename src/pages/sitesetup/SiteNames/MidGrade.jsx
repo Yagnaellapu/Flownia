@@ -5,6 +5,9 @@ import { menuList } from "../../../constants/menu.constants";
 import { Buttons, Table } from "../../../components";
 import { EditDeleteButtons, Search } from "../../../components";
 import { createColumnHelper } from "@tanstack/react-table";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Tankname = [
   {
@@ -437,25 +440,45 @@ const Midgrade = () => {
     },
   ];
 
+ const navigate = useNavigate();
+
+
   const isEditActive = selectedRows.length === 1;
   const isDeleteActive = selectedRows.length > 0;
 
   return (
-    <div className="flex-grow px-4">
-      <div className="flex items-center gap-2 h-14 text-primary-color font-bold">
+    <div className="flex-grow mx-6">
+      <div className="flex items-center h-14 text-primary-color font-bold">
         <div className="flex items-center gap-2">
           <AiOutlineSetting className="w-6 h-6" />
           <h3>{menuList.SITE_SETUP_MIDGRADE}</h3>
         </div>
         <div className="flex justify-end flex-1">
-          <p className="mr-8">Facility</p>
-          <p className="mr-8">Tank</p>
-          <p className="mr-8">Tank Product</p>
+          <p
+            className="mr-8 cursor-pointer group relative"
+            onClick={() => navigate(`/sitesetup/facility`)}
+          >
+            Facility
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
+          <p
+            className="mr-8 cursor-pointer group relative"
+            onClick={() => navigate(`/sitesetup/tank`)}
+          >
+            Tank
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
+          <p
+            className="cursor-pointer group relative"
+            onClick={() => navigate(`/sitesetup/tank product`)}
+          >
+            Tank Product
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
         </div>
       </div>
-      <div className="py-8 gap-4 mb-4">
-        <div className="w-full mx-auto px-2">
-          <form className="grid grid-cols-6 gap-6">
+      <div className="py-8 mb-4">
+          <form className="grid grid-cols-6 gap-3">
             <div className="col-span-1">
               <Selector label={"Midgrade Product"} selectorList={Tankname} />
             </div>
@@ -487,7 +510,6 @@ const Midgrade = () => {
               />
             </div>
           </form>
-        </div>
 
         <Buttons
           btnContainerClassName="mt-16 flex justify-center mb-4 gap-8"

@@ -1,4 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+Checkbox.propTypes = {
+  props: PropTypes.object
+  }
 
 function Checkbox(props) {
   const isChecked = props?.checked;

@@ -6,15 +6,19 @@ const menuList = {
   APP_ACCESS: "App Access",
   NOTIFICATIONS: "Notifications",
   BILLING: "Billing",
+  RELEASES: "Releases",
   SITE_SETUP_FACILITY: "Site Setup >> Facility",
   SITE_SETUP_TANK: "Site Setup >> Tank",
-  SITE_SETUP_TANKPRODUCT: "Site Setup >> Tank Prduct",
+  SITE_SETUP_TANKPRODUCT: "Site Setup >> Tank Product",
   SITE_SETUP_MIDGRADE: "Site Setup >> Midgrade",
   USER_SETUP_MANAGER: "User Setup >> Manager",
   USER_SETUP_ACCOUNTANT: "User Setup >> Accountant",
   USER_SETUP_OWNER: "User Setup >> Owner",
   USER_SETUP_APPUSER: "User Setup >> App User",
   USER_SETUP_CORPORATEUSER: "User Setup >> Corporate User",
+  NOTIFICATIONS_SCROLLINGMESSAGE: "  Notifications >> Scrolling Message",
+  NOTIFICATIONS_SMSNOTIFICATION: "  Notifications >> Sms Notification",
+  NOTIFICATIONS_LICENSENOTIFICATION: "  Notifications >> License Notification",
 };
 
 export { menuList };

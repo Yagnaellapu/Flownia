@@ -8,12 +8,12 @@ import {
   EditDeleteButtons,
   TextField,
   ScrollToTop,
-  Button,
 } from "../../components";
 import Buttons from "../../components/Buttons/Buttons";
 import { createColumnHelper } from "@tanstack/react-table";
 import { formatPhoneNumber } from "../../utils/formatPhoneNumber";
 import { menuList } from "../../constants/menu.constants";
+import { useOverlay } from "../../stores";
 
 const Zlinks = () => {
   const [inputValue, setInputValue] = useState("");
@@ -21,6 +21,9 @@ const Zlinks = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const [selectedRows, setSelectedRows] = useState([]);
+
+  const showEditModal = useOverlay((state) => state.showEditModal);
+  const showDeleteModal = useOverlay((state) => state.showDeleteModal);
 
   const headerData = [
     {
@@ -489,17 +492,23 @@ const Zlinks = () => {
     },
   ];
 
+  const handleEdit = () => {
+    showEditModal();
+  };
+  const handleDelete = () => {
+    showDeleteModal();
+  };
+
   const isEditActive = selectedRows.length === 1;
   const isDeleteActive = selectedRows.length > 0;
 
   return (
-    <div className="flex-grow px-4">
+    <div className="flex-grow mx-6">
       <div className="flex items-center gap-2 h-14 text-primary-color font-bold">
         <TfiMenuAlt className="w-6 h-6" />
         <h3>{menuList.Z_LINKS}</h3>
       </div>
-      <div className="py-8 gap-4 mb-4">
-        <div className="w-full mx-auto px-2">
+      <div className="py-8 mb-4">
           <form className="col-span-3 grid grid-cols-3 gap-8">
             <div className="col-span-1 flex flex-col">
               <Selector label="Site Name" selectorList={sitename} />
@@ -514,24 +523,26 @@ const Zlinks = () => {
               />
             </div>
             <div className="col-span-1 flex flex-col">
-              <FaUserTie className=" text-indigo-400 w-14 h-12 absolute top- right-72 transform translate-x-1/4 -translate-y-12" />
-              <div className="mt-1">
+              <FaUserTie className=" text-indigo-400 w-14 h-12 absolute right-72 transform translate-x-1/4 -translate-y-14" />
+              <div>
                 <p className="mb-2">Name: {userInfo.name}</p>
                 <p className="mb-2">Email: {userInfo.Email}</p>
                 <p className="mb-2">Phone: {userInfo.phoneNumber}</p>
               </div>
             </div>
           </form>
-        </div>
+        
         <Buttons
           btnContainerClassName="flex justify-center gap-10 mt-10 "
           buttons={buttons}
-        /> 
+        />
       </div>
       <div className="px-4 py-3 h-14 flex items-center">
         <EditDeleteButtons
           isEditActive={isEditActive}
           isDeleteActive={isDeleteActive}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
         />
         <Search
           searchValue={searchValue}
@@ -552,3 +563,4 @@ const Zlinks = () => {
 };
 
 export default Zlinks;
+

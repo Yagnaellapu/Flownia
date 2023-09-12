@@ -30,7 +30,7 @@ function UserName() {
     }
   };
 
-  return <div className="h-full">{renderComponents()}</div>;
+  return <div>{renderComponents()}</div>;
 }
 
 export default UserName;

@@ -16,7 +16,15 @@ TextField.defaultProps = {
   disabled: false,
 };
 
-function TextField({ type, label, onChange, value, placeholder, disabled, className }) {
+function TextField({
+  type,
+  label,
+  onChange,
+  value,
+  placeholder,
+  disabled,
+  className,
+}) {
   return (
     <div className="w-full">
       <label className="block mb-2 font-medium">{label}</label>
@@ -26,7 +34,6 @@ function TextField({ type, label, onChange, value, placeholder, disabled, classN
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        maxLength={12}
         disabled={disabled}
       />
     </div>
@@ -34,4 +41,3 @@ function TextField({ type, label, onChange, value, placeholder, disabled, classN
 }
 
 export default TextField;
-
