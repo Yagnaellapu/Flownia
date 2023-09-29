@@ -3,7 +3,7 @@
 @tailwind utilities;
 @import "styles/colors.css";
 
-@layer base {
+/* @layer base {
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"] {
@@ -11,7 +11,7 @@
     margin: 0;
     -moz-appearance: textfield !important;
   }
-}
+} */
 
 
 .has-overlay {

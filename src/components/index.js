@@ -1,6 +1,6 @@
 import Header from "./superAdminHeader/Header";
 import Footer from "./superAdminFooter/Footer";
-import Selector from "./Selector/Selector";
+import Selector from "./selector/Selector";
 import Cards from "./Cards/Cards";
 import Button from "./Buttons/Button";
 import Table from "./Table/Table";

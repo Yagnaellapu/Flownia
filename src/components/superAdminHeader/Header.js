@@ -179,7 +179,7 @@ function Header() {
         </div>
         <div>
           <Button
-            className="border-2 border-black-400 font-semibold px-8 mr-4"
+            className="border-2 border-black font-semibold px-8 mr-4"
             title={"Logout"}
             primary
           />

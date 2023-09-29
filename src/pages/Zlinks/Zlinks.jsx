@@ -40,7 +40,7 @@ const Zlinks = () => {
       id: 2,
       startDate: "1996-03-15",
       businessType: "Retail",
-      brand: "ABC",
+      brand: "ABCe",
       facilityName: "Store 1",
       facilityAddress: "123 Main St",
       state: "CA",
@@ -445,10 +445,9 @@ const Zlinks = () => {
     setSearchValue(event.target.value);
   };
 
-  const handleInputChange = (e) => {
-    const value = e.target.value;
+  const handleInputChange = (value) => {
     const numericValue = value.replace(/[^0-9]/g, "");
-
+  
     if (numericValue.length <= 10) {
       setInputValue(formatPhoneNumber(numericValue));
       setError(false);
@@ -456,6 +455,7 @@ const Zlinks = () => {
       setError(true);
     }
   };
+  
 
   const handleFormSubmit = () => {
     if (error) {
@@ -503,7 +503,7 @@ const Zlinks = () => {
   const isDeleteActive = selectedRows.length > 0;
 
   return (
-    <div className="flex-grow mx-6">
+    <div className="flex-grow mx-8">
       <div className="flex items-center gap-2 h-14 text-primary-color font-bold">
         <TfiMenuAlt className="w-6 h-6" />
         <h3>{menuList.Z_LINKS}</h3>
@@ -515,15 +515,15 @@ const Zlinks = () => {
             </div>
             <div className="col-span-1 flex flex-col">
               <TextField
-                type="number"
+                type="text"
                 label="User Contact #"
                 placeholder="User Contact #"
                 value={inputValue}
-                onChange={handleInputChange}
+                onChange={(value) => handleInputChange(value)}
               />
             </div>
-            <div className="col-span-1 flex flex-col">
-              <FaUserTie className=" text-indigo-400 w-14 h-12 absolute right-72 transform translate-x-1/4 -translate-y-14" />
+            <div className="col-span-1 flex items-center gap-8 ">
+              <FaUserTie className=" text-indigo-400 w-14 h-12" />
               <div>
                 <p className="mb-2">Name: {userInfo.name}</p>
                 <p className="mb-2">Email: {userInfo.Email}</p>

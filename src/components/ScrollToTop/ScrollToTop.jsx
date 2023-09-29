@@ -4,7 +4,10 @@ import { MdKeyboardDoubleArrowUp } from "react-icons/md";
 
 function ScrollToTop() {
     const scrollToTop = () => {
-        window.scrollTo(0, 0);
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", 
+        });
     };
     return (
         <div className="flex justify-end items-center">

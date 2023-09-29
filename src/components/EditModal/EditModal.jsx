@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Selector from "../Selector/Selector";
+
 import Button from "../Buttons/Button";
 import Modal from "../Modal/Modal";
 import { useNotifications } from "../../stores";
 import TextField from "../TextField/TextField";
+import Selector from "../selector/Selector";
+
 
 function EditModal({ onClose }) {
   const [editData, setEditData] = useState({});

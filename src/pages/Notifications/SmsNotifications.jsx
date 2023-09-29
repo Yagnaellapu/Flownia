@@ -8,7 +8,7 @@ import {
 } from "../../components";
 import { createColumnHelper } from "@tanstack/react-table";
 import { FiMail as MailIcon } from "react-icons/fi";
-import { menuList } from "../../../constants/menu.constants";
+import { menuList } from "../../constants/menu.constants";
 import { useNavigate } from "react-router-dom";
 
 function SmsNotifications() {
