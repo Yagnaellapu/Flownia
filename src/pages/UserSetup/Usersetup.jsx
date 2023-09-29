@@ -46,12 +46,12 @@ function Usersetup() {
     },
   ]);
   return (
-    <div className="flex-grow px-4">
+    <div className="flex-grow mx-6">
       <div className="flex items-center gap-2 h-14 text-primary-color font-bold">
         <FiUser className="w-6 h-6" />
         <h3>{UserSetup.TITLE}</h3>
       </div>
-      <div className="grid grid-cols-5 gap-5 px-3 mt-4">
+      <div className="grid grid-cols-5 gap-6 px-3 mt-4">
         {cards.map(({ icon, percentage, content, title }) => (
           <div
             className="w-full hover:scale-110 ease-in duration-300"
@@ -59,7 +59,7 @@ function Usersetup() {
           >
             <Link to={`${title.toLowerCase()}`} className="block">
               <div className="relative bg-white p-4 h-32 rounded-md shadow-lg">
-                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-b from-gray-200 to-transparent"></div>
+                {/* <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-b from-gray-200 to-transparent"></div> */}
                 <div className="flex items-center justify-between">
                   {icon}
                   <div

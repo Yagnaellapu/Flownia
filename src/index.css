@@ -12,3 +12,8 @@
     -moz-appearance: textfield !important;
   }
 }
+
+
+.has-overlay {
+  overflow: hidden;
+}

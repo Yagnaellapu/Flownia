@@ -5,6 +5,7 @@ import { Buttons, Table } from "../../../components";
 import { EditDeleteButtons, Search } from "../../../components";
 import { createColumnHelper } from "@tanstack/react-table";
 import { FaUserTie } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const userlocation = [
   {
@@ -418,60 +419,93 @@ function Owner() {
   const buttons = [
     {
       title: "Submit",
-      onClick: () => {},
+      onClick: () => { },
       type: "primary",
     },
     {
       title: "Cancel",
-      onClick: () => {},
+      onClick: () => { },
       type: "secondary",
     },
   ];
+  const navigate = useNavigate();
+
 
   const isEditActive = selectedRows.length === 1;
   const isDeleteActive = selectedRows.length > 0;
 
   return (
-    <div className="flex-grow px-4">
-      <div className="flex items-center gap-2 text-primary-color h-14 font-bold">
-        <FaUserTie className="w-6 h-6" />
-        <h3>{menuList.USER_SETUP_OWNER}</h3>
-      </div>
-      <div className="py-8 gap-4 mb-4">
-        <div className="w-full mx-auto px-2">
-          <form className="grid grid-cols-4 gap-6">
-            <div className="col-span-1">
-              <TextField
-                type={"text"}
-                label={"User Name"}
-                placeholder={"User Name"}
-                value={""}
-                onChange={() => {}}
-              />
-            </div>
-            <div className="col-span-1">
-              <Selector label={"User Location"} selectorList={userlocation} />
-            </div>
-            <div className="col-span-1">
-              <TextField
-                type={"text"}
-                label={"Contact"}
-                placeholder={"Contact"}
-                value={""}
-                onChange={() => {}}
-              />
-            </div>
-            <div className="col-span-1">
-              <TextField
-                type={"text"}
-                label={"User Email"}
-                placeholder={"User Email"}
-                value={""}
-                onChange={() => {}}
-              />
-            </div>
-          </form>
+    <div className="flex-grow mx-6">
+      <div className="flex items-center text-primary-color h-14 font-bold">
+        <div className="flex items-center gap-2">
+          <FaUserTie className="w-6 h-6" />
+          <h3>{menuList.USER_SETUP_OWNER}</h3>
         </div>
+        <div className="flex justify-end flex-1">
+          <p
+            className="mr-8 cursor-pointer group relative"
+            onClick={() => navigate(`/usersetup/corporate user`)}
+          >
+            Corporate User
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
+          <p
+            className="mr-8 cursor-pointer  group relative"
+            onClick={() => navigate(`/usersetup/manager`)}
+          >
+            Manager
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
+          <p
+            className="mr-8 cursor-pointer group relative"
+            onClick={() => navigate(`/usersetup/app user`)}
+          >
+            App User
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
+          <p
+            className="cursor-pointer  group relative"
+            onClick={() => navigate(`/usersetup/accountant`)}
+          >
+            Accountant
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
+        </div>
+      </div>
+      <div className="py-8 mb-4">
+        <form className="grid grid-cols-4 gap-3">
+          <div className="col-span-1">
+            <TextField
+              type={"text"}
+              label={"User Name"}
+              placeholder={"User Name"}
+              value={""}
+              onChange={() => { }}
+            />
+          </div>
+          <div className="col-span-1">
+            <Selector label={"User Location"} selectorList={userlocation} />
+          </div>
+          <div className="col-span-1">
+            <TextField
+              type={"text"}
+              label={"Contact"}
+              placeholder={"Contact"}
+              value={""}
+              onChange={() => { }}
+            />
+          </div>
+          <div className="col-span-1">
+            <TextField
+              type={"text"}
+              label={"User Email"}
+              placeholder={"User Email"}
+              value={""}
+              onChange={() => { }}
+            />
+          </div>
+        </form>
+
 
         <Buttons
           btnContainerClassName="flex justify-center gap-8 mt-16 mb-4"

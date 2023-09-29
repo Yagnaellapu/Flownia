@@ -1,5 +1,4 @@
 import Header from "./superAdminHeader/Header";
-import SideBar from "./superAdminSideBar/SideBar";
 import Footer from "./superAdminFooter/Footer";
 import Selector from "./Selector/Selector";
 import Cards from "./Cards/Cards";
@@ -14,10 +13,12 @@ import Modal from "./Modal/Modal";
 import Buttons from "./Buttons/Buttons";
 import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import ToolTip from "./ToolTip/ToolTip";
+import EditModal from "./EditModal/EditModal";
+import Loader from "./Loader/Loader";
+
 
 export {
   Header,
-  SideBar,
   Footer,
   Selector,
   Cards,
@@ -32,4 +33,6 @@ export {
   Modal,
   ScrollToTop,
   ToolTip,
+  EditModal,
+  Loader,
 };

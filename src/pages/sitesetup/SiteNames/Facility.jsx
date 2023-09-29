@@ -5,6 +5,7 @@ import { menuList } from "../../../constants/menu.constants";
 import { Buttons, Table } from "../../../components";
 import { EditDeleteButtons, Search } from "../../../components";
 import { createColumnHelper } from "@tanstack/react-table";
+import {useNavigate } from "react-router-dom";
 
 const businesstype = [
   {
@@ -76,7 +77,6 @@ const states = [
   { name: "WI" },
   { name: "WY" },
 ];
-
 
 const Facility = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -491,65 +491,81 @@ const Facility = () => {
     },
   ];
 
+ const navigate = useNavigate();
+
   const isEditActive = selectedRows.length === 1;
   const isDeleteActive = selectedRows.length > 0;
 
   return (
-    <div className="flex-grow px-4">
-      <div className="flex items-center justify-end gap-2 text-primary-color h-14 font-bold">
+    <div className="flex-grow mx-6">
+      <div className="flex items-center text-primary-color h-14 font-bold">
         <div className="flex items-center gap-2">
           <AiOutlineSetting className="w-6 h-6" />
           <h3>{menuList.SITE_SETUP_FACILITY}</h3>
         </div>
         <div className="flex justify-end flex-1">
-          <p className="mr-8">Tank</p>
-          <p className="mr-8">Tank Product</p>
-          <p className="mr-8">Midgrade</p>
+          <p
+            className=" mr-8 cursor-pointer group relative"
+            onClick={() => navigate(`/sitesetup/tank`)}
+          >
+            Tank
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
+          <p
+            className="mr-8 cursor-pointer group relative"
+            onClick={() => navigate(`/sitesetup/tank product`)}
+          >
+            Tank Product
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
+          <p
+            className="cursor-pointer group relative"
+            onClick={() => navigate(`/sitesetup/mid grade`)}
+          >
+            Midgrade
+            <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
+          </p>
         </div>
       </div>
-      <div className="py-8 gap-4 mb-4">
-        <div className="w-full mx-auto px-2">
-          <form className="col-span-6 grid grid-cols-6 gap-2">
-            <div className="col-span-1 flex flex-col">
-              <Selector label={"Business Type"} selectorList={businesstype} />
-            </div>
-            <div className="col-span-1 flex flex-col">
-              <Selector label={"Brand"} selectorList={businesstype} />
-            </div>
-            <div className="col-span-4 grid grid-cols-4 gap-2">
-              <div className="col-span-1 flex flex-col">
-                <TextField
-                  type={"text"}
-                  label={"Facility Name"}
-                  placeholder={"Facility Name"}
-                  value={""}
-                  onChange={() => {}}
-                />
-              </div>
-              <div className="col-span-1 flex flex-col">
-                <TextField
-                  type={"text"}
-                  label={"Address"}
-                  placeholder={"Address"}
-                  value={""}
-                  onChange={() => {}}
-                />
-              </div>
-              <div className="col-span-1 flex flex-col">
-                <Selector label={"State"} selectorList={states} />
-              </div>
-              <div className="col-span-1 flex flex-col">
-                <TextField
-                  type={"text"}
-                  label={"Zip Code"}
-                  placeholder={"Zip Code"}
-                  value={""}
-                  onChange={() => {}}
-                />
-              </div>
-            </div>
-          </form>
-        </div>
+      <div className="py-8 mb-4">
+        <form className="col-span-6 grid grid-cols-6 gap-3">
+          <div className="col-span-1 flex flex-col">
+            <Selector label={"Business Type"} selectorList={businesstype} />
+          </div>
+          <div className="col-span-1 flex flex-col">
+            <Selector label={"Brand"} selectorList={businesstype} />
+          </div>
+          <div className="col-span-1 flex flex-col">
+            <TextField
+              type={"text"}
+              label={"Facility Name"}
+              placeholder={"Facility Name"}
+              value={""}
+              onChange={() => {}}
+            />
+          </div>
+          <div className="col-span-1 flex flex-col">
+            <TextField
+              type={"text"}
+              label={"Address"}
+              placeholder={"Address"}
+              value={""}
+              onChange={() => {}}
+            />
+          </div>
+          <div className="col-span-1 flex flex-col">
+            <Selector label={"State"} selectorList={states} />
+          </div>
+          <div className="col-span-1 flex flex-col">
+            <TextField
+              type={"text"}
+              label={"Zip Code"}
+              placeholder={"Zip Code"}
+              value={""}
+              onChange={() => {}}
+            />
+          </div>
+        </form>
 
         <Buttons
           btnContainerClassName="flex justify-center gap-8 mt-16 mb-4"

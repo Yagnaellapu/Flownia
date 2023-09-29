@@ -24,9 +24,10 @@ function EditDeleteButtons({ isEditActive, isDeleteActive, onEdit, onDelete }) {
           className={`cursor-pointer px-2 w-9 h-8 ${
             isEditActive ? "text-green-600" : "text-gray-400"
           }`}
-          onClick={onEdit}
+          // onClick={isEditActive ? onEdit : () => {}}
+          // onClick={onEdit}
         />
-        <ToolTip label="Edit" position="top"/>
+        {/* <ToolTip label="Edit" position="top" /> */}
       </div>
 
       <div className="group" id="Delete">
@@ -34,9 +35,9 @@ function EditDeleteButtons({ isEditActive, isDeleteActive, onEdit, onDelete }) {
           className={`cursor-pointer px-2 w-9 h-8 ${
             isDeleteActive ? "text-red-600" : "text-gray-400"
           }`}
-          onClick={onDelete}
+          // onClick={isDeleteActive ? onDelete : () => {}}
         />
-        <ToolTip label="Delete" position="top" />
+        {/* <ToolTip label="Delete" position="top" /> */}
       </div>
     </div>
   );

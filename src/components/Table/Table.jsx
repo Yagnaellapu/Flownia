@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 import { rankItem } from "@tanstack/match-sorter-utils";
 import IndeterminateCheckbox from "../CheckBoxes/IndeterminateCheckbox";
 import Pagination from "../Pagination/Pagination";
+import Loader from "../Loader/Loader";
 
 const globalFilterFn = (row, columnId, value, addMeta) => {
   const itemRank = rankItem(row.getValue(columnId), value);
@@ -30,6 +31,7 @@ Table.propTypes = {
   disableHeaderCheckBox: PropTypes.bool,
   searchInput: PropTypes.string,
   noPagination: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
 
 Table.defaultProps = {
@@ -38,6 +40,7 @@ Table.defaultProps = {
   selectedRows: () => {},
   searchInput: "",
   noPagination: false,
+  isLoading: false,
 };
 
 function Table({
@@ -48,6 +51,7 @@ function Table({
   disableHeaderCheckBox,
   searchInput,
   noPagination,
+  isLoading,
 }) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [globalFilter, setGlobalFilter] = React.useState("");
@@ -121,12 +125,22 @@ function Table({
   return (
     <>
       <div>
-        <table className="w-full table-auto">
-          <thead>
+        <table className="w-full table-auto bg-white rounded-xl">
+          <thead className="bg-[#cdc3f1]">
             {table.getHeaderGroups().map((headerGroup, index) => (
-              <tr key={headerGroup.id} className="bg-[#cdc3f1] text-center">
-                {headerGroup.headers.map((header, index) => (
-                  <th key={header.id} className={`p-3`}>
+              <tr key={headerGroup.id} className="text-center">
+                {headerGroup.headers.map((header, index) => {
+                  const isFirstHeader = index === 0;
+                  const isLastHeader = index === headerGroup.headers.length - 1;
+
+                  const headerClasses = [
+                    "p-4 font-bold",
+                    isFirstHeader ? "rounded-tl-xl" : "", // Add 'rounded-tl-xl' to the first header
+                    isLastHeader ? "rounded-tr-xl" : "", // Add 'rounded-tr-xl' to the last header
+                  ];
+
+                  return (
+                    <th key={header.id} className={headerClasses.join(" ")}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -134,7 +148,8 @@ function Table({
                           header.getContext()
                         )}
                   </th>
-                ))}
+                  );
+                })}
               </tr>
             ))}
           </thead>
@@ -142,7 +157,7 @@ function Table({
             {table.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className={`border-b-2 hover:bg-[#ebe7f9] bg-opacity-20 text-center`}
+                className={`border-b hover:bg-[#ebe7f9] bg-opacity-20 text-center`}
               >
                 {row.getVisibleCells().map((cell) => (
                   <td key={cell.id} className={`p-3`}>
@@ -153,6 +168,16 @@ function Table({
             ))}
           </tbody>
         </table>
+        {isLoading && (
+          <div className="w-full h-[200px] flex items-center justify-center ">
+            <Loader />
+          </div>
+        )}
+        {!tableData.length && (
+          <div className="w-full h-[200px] flex items-center justify-center ">
+            There is not to show here
+          </div>
+        )}
       </div>
       {!noPagination ? <Pagination table={table} /> : null}
     </>

@@ -12,6 +12,7 @@ function Pagination({ table }) {
     table.setPageSize(10);
   }, []);
   const currentPage = table.options.state.pagination.pageIndex;
+
   return (
     <div className="flex items-center mr-7 mt-6 gap-2 justify-end">
       <button
