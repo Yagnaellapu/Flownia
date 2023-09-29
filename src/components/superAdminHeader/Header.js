@@ -8,7 +8,7 @@ import logo3 from "../../assets/img/logo3.png";
 import logo1 from "../../assets/img/logo1.png";
 import { MdNavigateNext as ArrowIcon } from "react-icons/md";
 import { BiHome as HomeIcon } from "react-icons/bi";
-import { FiUser, FiUser as UserIcon } from "react-icons/fi";
+import { FiUser as UserIcon } from "react-icons/fi";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { AiOutlineSetting } from "react-icons/ai";
 import { BsBoxSeam } from "react-icons/bs";
@@ -186,7 +186,6 @@ function Header() {
         </div>
       </nav>
     </header>
-  );
-}
+  );}
 
 export default Header;
