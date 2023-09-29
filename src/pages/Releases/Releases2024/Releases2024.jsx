@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import ReleasesDocument from "../../../components/ReleasesDocument/ReleasesDocument";
 
 const releases = [
@@ -17,6 +17,12 @@ const releases = [
 
 
 function Releases2024 () {
+
+  const [showContents, setShowContents] = useState(null);
+
+  const toggleContent = (index) => {
+    setShowContents((prevOpenRelease) => (prevOpenRelease === index ? null : index));
+  };
   return (
     <div className="flex-grow">
       <div className="flex items-center p-2 bg-[#cdc3f1] gap-2 h-10  font-bold">
@@ -29,6 +35,8 @@ function Releases2024 () {
             releaseName={release.releaseName}
             releaseDate={release.releaseDate}
             content={release.content}
+            showContent={showContents === index}
+            toggleContent={() => toggleContent(index)}
           />
         ))}
       </div>

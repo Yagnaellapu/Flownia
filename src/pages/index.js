@@ -1,7 +1,6 @@
 import AppAccess from "./AppAccess/AppAccess";
 import Billing from "./Billing/Billing";
 import Home from "./Home/Home";
-import Notifications from "./Notifications/Notifications";
 import Manager from "./Setup/UserSetup/UserNames/Manager";
 import Usersetup from "./Setup/UserSetup/Usersetup";
 import Zlinks from "./Zlinks/Zlinks";

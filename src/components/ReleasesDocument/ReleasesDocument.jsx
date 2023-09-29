@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
-function ReleasesDocument ({ releaseName, releaseDate, content }) {
-  const [showContent, setShowContent] = useState(false);
-
-  const toggleContent = () => {
-    setShowContent(!showContent);
-  };
+function ReleasesDocument ({ releaseName, releaseDate, content, showContent, toggleContent }) {
+  
 
   return (
     <div className="items-center mt-8 px-6">
