@@ -27,7 +27,7 @@ function EditDeleteButtons({ isEditActive, isDeleteActive, onEdit, onDelete }) {
           // onClick={isEditActive ? onEdit : () => {}}
           // onClick={onEdit}
         />
-        {/* <ToolTip label="Edit" position="top" /> */}
+        <ToolTip label="Edit" position="top" />
       </div>
 
       <div className="group" id="Delete">
@@ -37,7 +37,7 @@ function EditDeleteButtons({ isEditActive, isDeleteActive, onEdit, onDelete }) {
           }`}
           // onClick={isDeleteActive ? onDelete : () => {}}
         />
-        {/* <ToolTip label="Delete" position="top" /> */}
+        <ToolTip label="Delete" position="top" />
       </div>
     </div>
   );
