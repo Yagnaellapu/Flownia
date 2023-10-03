@@ -443,34 +443,34 @@ function Accountant() {
           <h3>{menuList.USER_SETUP_ACCOUNTANT}</h3>
         </div>
         <div className="flex justify-end flex-1">
-          <p
+          <div
             className="mr-8 cursor-pointer group relative "
             onClick={() => navigate(`/usersetup/corporate user`)}
           >
             Corporate User
             <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
-          </p>
-          <p
+          </div>
+          <div
             className="mr-8 cursor-pointer group relative"
             onClick={() => navigate(`/usersetup/owner`)}
           >
             Owner
             <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
-          </p>
-          <p
+          </div>
+          <div
             className="mr-8 cursor-pointer group relative"
             onClick={() => navigate(`/usersetup/manager`)}
           >
             Manager
             <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
-          </p>
-          <p
+          </div>
+          <div
             className="cursor-pointer group relative"
             onClick={() => navigate(`/usersetup/app user`)}
           >
             App User
             <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
-          </p>
+          </div>
         </div>
       </div>
       <div className="py-8 mb-4">

@@ -3,7 +3,7 @@ const formatPhoneNumber = (value) => {
   const matches = numericValue.match(/^(\d{3})(\d{3})(\d{4})$/);
 
   if (matches) {
-    return `${matches[1]}-${matches[2]}-${matches[3]}`;
+    return `(${matches[1]}) ${matches[2]}-${matches[3]}`;
   }
 
   return numericValue;

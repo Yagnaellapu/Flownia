@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import { HiOutlineSquares2X2 } from "react-icons/hi2";
-import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 import { menuList } from "../../constants/menu.constants";
 import { NavLink } from "react-router-dom";
 import logo3 from "../../assets/img/logo3.png";
-import logo1 from "../../assets/img/logo1.png";
-import { MdNavigateNext as ArrowIcon } from "react-icons/md";
 import { BiHome as HomeIcon } from "react-icons/bi";
-import { FiUser, FiUser as UserIcon } from "react-icons/fi";
+import { FiUser as UserIcon } from "react-icons/fi";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { AiOutlineSetting } from "react-icons/ai";
 import { BsBoxSeam } from "react-icons/bs";
@@ -19,9 +15,7 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import Button from "../Buttons/Button";
 import { GrUserSettings } from "react-icons/gr";
 
-Header.propTypes = {
-  toggleSidebar: PropTypes.func.isRequired,
-};
+
 
 
 function Header() {
@@ -52,7 +46,7 @@ function Header() {
     {
       name: menuList.USER_SETUP,
       path: routes.USER_SETUP,
-          icon: <FiUser size={20} />,
+          icon: <UserIcon size={20} />,
         },
       ],
     },

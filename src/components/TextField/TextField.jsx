@@ -33,7 +33,7 @@ function TextField({
         className={`${className} w-full border-2 border-violet-400 rounded-lg py-2 px-3 focus:outline-none focus:border-violet-400 focus:ring-violet-400 block focus:ring-3`}
         placeholder={placeholder}
         value={value}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
       />
     </div>

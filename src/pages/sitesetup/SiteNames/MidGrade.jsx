@@ -454,27 +454,27 @@ const Midgrade = () => {
           <h3>{menuList.SITE_SETUP_MIDGRADE}</h3>
         </div>
         <div className="flex justify-end flex-1">
-          <p
+          <div
             className="mr-8 cursor-pointer group relative"
             onClick={() => navigate(`/sitesetup/facility`)}
           >
             Facility
             <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
-          </p>
-          <p
+          </div>
+          <div
             className="mr-8 cursor-pointer group relative"
             onClick={() => navigate(`/sitesetup/tank`)}
           >
             Tank
             <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
-          </p>
-          <p
+          </div>
+          <div
             className="cursor-pointer group relative"
             onClick={() => navigate(`/sitesetup/tank product`)}
           >
             Tank Product
             <div className="absolute inset-x-0 h-0.5 bg-violet-400 transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100"></div>
-          </p>
+          </div>
         </div>
       </div>
       <div className="py-8 mb-4">
